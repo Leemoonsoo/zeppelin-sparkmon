@@ -1,0 +1,33 @@
+<div style="margin-bottom:10px; float:right">
+  Interval <select ng-model="interval">
+    <option value="0">stop</option>
+    <option value="1">1s</option>
+    <option value="2">2s</option>
+    <option value="3">3s</option>
+    <option value="5">5s</option>
+    <option value="10">10s</option>
+    <option value="15">15s</option>
+    <option value="20">20s</option>
+    <option value="30">30s</option>
+    <option value="60">60s</option>
+  </select>
+</div>
+
+<table class="table">
+    <tr>
+        <th style="width:200px">Host</th>
+        <th style="width:100px">Cpu</th>
+        <th></th>
+    </tr>
+    <tr ng-repeat="(hostname, cpuUsage) in cpuInfo | orderBy: 'hostname'">
+        <td>{{hostname}}</td>
+        <td>{{cpuUsage}}</td>
+        <td>
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{cpuUsage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{cpuUsage}}%;">
+                <span class="sr-only">{{cpuUsage}}%</span>
+              </div>
+            </div>
+        </td>
+    </tr>
+</table>
